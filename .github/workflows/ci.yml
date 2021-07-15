@@ -22,15 +22,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - name: Coverlet coverage test
-      # You may pin to the exact commit or the version.
-      # uses: b3b00/coverlet-action@ea67400f084993d98cfb3e2ec5948197d80a7d4e
-      uses: b3b00/coverlet-action@1.1.1
-      with:
-        # output filename
-        output: ./lcov.info
-        # output format : lcov, json, opencover, corbertura, temacity (see coverlet documentation)
-        outputFormat: lcov
-        # path to unit test project from repository root
-        testProject: ./DevopsPractice.Tests.Behavior/DevopsPractice.Tests.Behavior.csproj
+      run: dotnet test --no-build /p:CollectCoverage=true /p:Threshold=75
