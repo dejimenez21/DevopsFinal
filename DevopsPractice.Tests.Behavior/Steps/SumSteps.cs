@@ -1,7 +1,6 @@
-﻿using RestSharp.Extensions;
+﻿
 using System;
 using TechTalk.SpecFlow;
-using RestSharp;
 using Xunit;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
