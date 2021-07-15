@@ -14,7 +14,7 @@
 
 ## Run integration and unit tests
 ```
-dotnet build ./DevopsPractice/DevopsPractice.csproj
-dotnet build ./DevopsPractice.Tests.Behavior/DevopsPractice.Tests.Behavior.csproj
-dotnet test
+dotnet restore
+dotnet build --no-restore
+dotnet test --no-build /p:CollectCoverage=true /p:Exclude="[DevopsPractice.Tests.Behavior]*" /p:Threshold=80
 ```
