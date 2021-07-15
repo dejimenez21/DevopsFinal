@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: ubuntu-latest
 
@@ -17,9 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:Exclude="[DevopsPractice.Tests.Behavior]*" /p:Threshold=75
+      run: dotnet build
+    - name: UnitTests+Integration tests
+      run: dotnet test --no-build /p:CollectCoverage=true /p:ExcludeByFile="**/DevopsPractice/*.cs" /p:Threshold=90
