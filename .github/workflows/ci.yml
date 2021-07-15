@@ -20,4 +20,4 @@ jobs:
     - name: Build
       run: dotnet build
     - name: UnitTests+Integration tests
-      run: dotnet test --no-build /p:CollectCoverage=true /p:ExcludeByFile=\"**/DevopsPractice/*.cs" /p:Threshold=90
+      run: dotnet test --no-build /p:CollectCoverage=true /p:ExcludeByFile="**/DevopsPractice/*.cs" /p:Threshold=90
