@@ -7,9 +7,9 @@ Scenario: Add two numbers
     Then the result <result> should be the sum
 
     Examples:
-        | num1 | num2  | result    |
-        | 2    | 2     | "4"       |
-        | 1    | 12    | "13"      |
-        | 100  | 1000  | "1100"    |
-        | 0    | 0     | "0"       |
-        | 1    | -1    | "Invalid" |
+        | num1 | num2  | result  |
+        | 2    | 2     | 4       |
+        | 1    | 12    | 13      |
+        | 100  | 1000  | 1100    |
+        | 0    | 0     | 0       |
+        | 1    | -1    | Invalid |

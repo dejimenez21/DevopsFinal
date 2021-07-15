@@ -3,14 +3,17 @@ using System;
 using TechTalk.SpecFlow;
 using RestSharp;
 using Xunit;
+using System.Net.Http;
+using Microsoft.AspNetCore.Mvc.Testing;
+using System.Threading.Tasks;
 
 namespace DevopsPractice.Tests.Behavior.Steps
 {
     [Binding]
     public class SumSteps
     {
+        private HttpClient _client;
         private const string BASE_URL = "https://localhost:5001/";
-        private IRestResponse response;
         private int num1;
         private int num2;
         private string content;
@@ -24,14 +27,13 @@ namespace DevopsPractice.Tests.Behavior.Steps
         }
         
         [When(@"I send sum request")]
-        public void WhenISendSumRequest()
+        public async Task WhenISendSumRequest()
         {
-            var client = new RestClient(BASE_URL);
+            var appFactory = new WebApplicationFactory<Startup>();
+            _client = appFactory.CreateClient();
 
-            var request = new RestRequest($"calculator/sum?num1={num1}&num2={num2}", Method.GET);
-
-            content = client.Execute(request).Content;
-
+            var response = await _client.GetAsync($"{BASE_URL}calculator/sum?num1={num1}&num2={num2}");
+            content = await response.Content.ReadAsStringAsync();
         }
         
         [Then(@"the result (.*) should be the sum")]

@@ -14,5 +14,7 @@
 
 ## Run integration and unit tests
 ```
+dotnet build ./DevopsPractice/DevopsPractice.csproj
+dotnet build ./DevopsPractice.Tests.Behavior/DevopsPractice.Tests.Behavior.csproj
 dotnet test
 ```

@@ -83,11 +83,11 @@ namespace DevopsPractice.Tests.Behavior.Features
         [Xunit.SkippableTheoryAttribute(DisplayName="Add two numbers")]
         [Xunit.TraitAttribute("FeatureTitle", "Sum")]
         [Xunit.TraitAttribute("Description", "Add two numbers")]
-        [Xunit.InlineDataAttribute("2", "2", "\"4\"", new string[0])]
-        [Xunit.InlineDataAttribute("1", "12", "\"13\"", new string[0])]
-        [Xunit.InlineDataAttribute("100", "1000", "\"1100\"", new string[0])]
-        [Xunit.InlineDataAttribute("0", "0", "\"0\"", new string[0])]
-        [Xunit.InlineDataAttribute("1", "-1", "\"Invalid\"", new string[0])]
+        [Xunit.InlineDataAttribute("2", "2", "4", new string[0])]
+        [Xunit.InlineDataAttribute("1", "12", "13", new string[0])]
+        [Xunit.InlineDataAttribute("100", "1000", "1100", new string[0])]
+        [Xunit.InlineDataAttribute("0", "0", "0", new string[0])]
+        [Xunit.InlineDataAttribute("1", "-1", "Invalid", new string[0])]
         public virtual void AddTwoNumbers(string num1, string num2, string result, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

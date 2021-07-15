@@ -32,6 +32,12 @@ namespace DevopsPractice
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevopsPractice", Version = "v1" });
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("DefaultPolicy",
+                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +53,8 @@ namespace DevopsPractice
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
