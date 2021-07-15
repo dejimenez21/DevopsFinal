@@ -4,3 +4,4 @@ DevopsPractice/obj/
 DevopsPractice.Tests.Behavior/obj/
 DevopsPractice.Tests.Behavior/bin/
 .vscode/
+DevopsPractice.Tests.Behavior/coverage.json
