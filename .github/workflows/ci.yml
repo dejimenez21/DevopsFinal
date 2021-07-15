@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build /p:CollectCoverage=true /p:Threshold=75
+      run: dotnet test /p:CollectCoverage=true /p:Exclude="[DevopsPractice.Tests.Behavior]*" /p:Threshold=75
