@@ -17,6 +17,7 @@ namespace DevopsPractice.Tests
         [InlineData(100, 1000, 1100, true)]
         [InlineData(0, 0, 0, true)]
         [InlineData(1, -1, null, false)] 
+        [InlineData(-5, 3, null, false)]
         public void Add_ShouldSumTwoNumbers(int a, int b, double? expected, bool success)
         {
             // Arrange
