@@ -21,9 +21,9 @@ namespace DevopsPractice.Controllers
             var success = calc.Add(num1, num2, out result);
 
             if (success)
-                return Ok(result);
+                return new JsonResult(new {result=result});
             else
-                return BadRequest("Invalid");
+                return new JsonResult(new {result="Invalid"});
         }
     }
 }
