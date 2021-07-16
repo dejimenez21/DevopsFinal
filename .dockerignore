@@ -1,0 +1,7 @@
+.vs/
+.vscode/
+.github/
+Dockerfile
+README.md
+DevopsPractice/bin/
+DevopsPractice/obj/
