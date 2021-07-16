@@ -13,7 +13,7 @@ namespace DevopsPractice.Controllers
     public class CalculatorController : ControllerBase
     {
         [HttpGet("sum")]
-        public ActionResult<string> Sum([FromQuery] int num1, [FromQuery] int num2)
+        public IActionResult Sum([FromQuery] int num1, [FromQuery] int num2)
         {
             var calc = new Calculator();
             double? result;
@@ -21,9 +21,9 @@ namespace DevopsPractice.Controllers
             var success = calc.Add(num1, num2, out result);
 
             if (success)
-                return result.ToString();
+                return Ok(result);
             else
-                return "Invalid";
+                return BadRequest("Invalid");
         }
     }
 }
