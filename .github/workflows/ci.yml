@@ -26,6 +26,8 @@ jobs:
     
     runs-on: ubuntu-latest
     
+    environment: Development
+    
     needs: build-and-test
 
     steps:
@@ -45,6 +47,8 @@ jobs:
   testApiDev:
     
     runs-on: ubuntu-latest
+    
+    environment: Development
     
     needs: deployDev
     
