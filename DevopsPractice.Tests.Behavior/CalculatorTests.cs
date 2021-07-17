@@ -76,5 +76,27 @@ namespace DevopsPractice.Tests
             Assert.Equal(expected, result);
             Assert.Equal(actual, success);
         }
+
+        [Theory]
+        [InlineData(2, 2, 1, true)]
+        [InlineData(1, 4, 0.25, true)]
+        [InlineData(100, 20, 5, true)]
+        [InlineData(0, 47, 0, true)]
+        [InlineData(1, -1, null, false)] 
+        [InlineData(-5, 3, null, false)] 
+        [InlineData(4, 0, null, false)]
+        public void Divide_ShouldDivideTwoNumbers(int a, int b, double? expected, bool success)
+        {
+            // Arrange
+            var calc = new Calculator();
+            double? result;
+
+            //Act
+            bool actual = calc.Divide(a, b, out result);
+
+            //Assert
+            Assert.Equal(expected, result);
+            Assert.Equal(actual, success);
+        }
     }
 }
