@@ -40,7 +40,7 @@ namespace DevopsPractice.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Sum", "\tSimple calculator for adding two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Sum", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -88,6 +88,7 @@ namespace DevopsPractice.Tests.Behavior.Features
         [Xunit.InlineDataAttribute("100", "1000", "1100", new string[0])]
         [Xunit.InlineDataAttribute("0", "0", "0", new string[0])]
         [Xunit.InlineDataAttribute("1", "-1", "Invalid", new string[0])]
+        [Xunit.InlineDataAttribute("-5", "3", "Invalid", new string[0])]
         public virtual void AddTwoNumbers(string num1, string num2, string result, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -96,7 +97,7 @@ namespace DevopsPractice.Tests.Behavior.Features
             argumentsOfScenario.Add("num2", num2);
             argumentsOfScenario.Add("result", result);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 4
+#line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -116,13 +117,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
+#line 4
  testRunner.Given(string.Format("I input numbers {0} and {1}", num1, num2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
+#line 5
     testRunner.When("I send sum request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 7
+#line 6
     testRunner.Then(string.Format("the result {0} should be the sum", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
