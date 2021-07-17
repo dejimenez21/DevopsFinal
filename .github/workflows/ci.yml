@@ -10,10 +10,6 @@ jobs:
   build-and-test:
 
     runs-on: ubuntu-latest
-    
-    env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
     - uses: actions/checkout@v2
@@ -26,7 +22,18 @@ jobs:
     - name: UnitTests+Integration tests
       run: dotnet test --no-build /p:CollectCoverage=true /p:ExcludeByFile="**/DevopsPractice/*.cs" /p:Threshold=90
   
-    - name: SonarScanner for .NET 5 with pull request decoration support
+        
+  sonar-analisys:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+    steps:
+    - uses: actions/checkout@v2 
+    - name: SonarScanner
       uses: highbyte/sonarscan-dotnet@2.0
       with:
         # The key of the SonarQube project
