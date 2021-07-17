@@ -12,3 +12,10 @@ subtract,1,-2,Invalid
 subtract,-8,2,Invalid
 subtract,4,8,Invalid
 subtract,100,200,Invalid
+multiply,2,2,4
+multiply,1,12,12
+multiply,100,20,2000
+multiply,0,0,0
+multiply,0,47,0
+multiply,1,-1,Invalid
+multiply,-5,3,Invalid
