@@ -41,7 +41,7 @@ namespace DevopsPractice.Tests
         [InlineData(-8, 2, null, false)]
         [InlineData(4, 8, null, false)] 
         [InlineData(100, 200, null, false)]
-        public void Add_ShouldSubtractTwoNumbers(int a, int b, double? expected, bool success)
+        public void Subtract_ShouldSubtractTwoNumbers(int a, int b, double? expected, bool success)
         {
             // Arrange
             var calc = new Calculator();
@@ -49,6 +49,28 @@ namespace DevopsPractice.Tests
 
             //Act
             bool actual = calc.Subtract(a, b, out result);
+
+            //Assert
+            Assert.Equal(expected, result);
+            Assert.Equal(actual, success);
+        }
+
+        [Theory]
+        [InlineData(2, 2, 4, true)]
+        [InlineData(1, 12, 12, true)]
+        [InlineData(100, 20, 2000, true)]
+        [InlineData(0, 0, 0, true)]
+        [InlineData(0, 47, 0, true)]
+        [InlineData(1, -1, null, false)] 
+        [InlineData(-5, 3, null, false)] 
+        public void Multiply_ShouldMultiplyTwoNumbers(int a, int b, double? expected, bool success)
+        {
+            // Arrange
+            var calc = new Calculator();
+            double? result;
+
+            //Act
+            bool actual = calc.Multiply(a, b, out result);
 
             //Assert
             Assert.Equal(expected, result);

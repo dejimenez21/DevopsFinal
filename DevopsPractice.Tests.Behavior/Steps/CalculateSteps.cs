@@ -70,5 +70,25 @@ namespace DevopsPractice.Tests.Behavior.Steps
             Assert.Equal(result, content.result);
         }
         #endregion
+
+        #region MultiplySteps
+        [When(@"I send multiply request")]
+        public async Task WhenISendMultiplyRequest()
+        {
+            var appFactory = new WebApplicationFactory<Startup>();
+            _client = appFactory.CreateClient();
+
+            var response = await _client.GetAsync($"{BASE_URL}calculator/multiply?num1={num1}&num2={num2}");
+            var jsonString = await response.Content.ReadAsStringAsync();
+            content = JsonConvert.DeserializeObject<JsonResponse>(jsonString);
+            
+        }
+        
+        [Then(@"the result (.*) should be the multiplication")]
+        public void ThenTheResultShouldBeTheMultiplication(string result)
+        {
+            Assert.Equal(result, content.result);
+        }
+        #endregion
     }
 }
