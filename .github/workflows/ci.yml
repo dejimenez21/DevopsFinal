@@ -77,7 +77,7 @@ jobs:
     
     environment: Staging
     
-    needs: build-and-test
+    needs: testApiDev
 
     steps:
     - uses: actions/checkout@v2
