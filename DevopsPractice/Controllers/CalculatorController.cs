@@ -25,5 +25,19 @@ namespace DevopsPractice.Controllers
             else
                 return new JsonResult(new {result="Invalid"});
         }
+
+        [HttpGet("subtract")]
+        public IActionResult Subtract([FromQuery] int num1, [FromQuery] int num2)
+        {
+            var calc = new Calculator();
+            double? result;
+
+            var success = calc.Subtract(num1, num2, out result);
+
+            if (success)
+                return new JsonResult(new {result=result});
+            else
+                return new JsonResult(new {result="Invalid"});
+        }
     }
 }
