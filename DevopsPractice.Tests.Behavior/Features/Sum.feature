@@ -1,5 +1,4 @@
 ﻿Feature: Sum
-	Simple calculator for adding two numbers
 
 Scenario: Add two numbers
 	Given I input numbers <num1> and <num2>
@@ -13,3 +12,4 @@ Scenario: Add two numbers
         | 100  | 1000  | 1100    |
         | 0    | 0     | 0       |
         | 1    | -1    | Invalid |
+        | -5   | 3     | Invalid |
