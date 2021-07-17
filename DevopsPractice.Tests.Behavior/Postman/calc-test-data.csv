@@ -1,6 +1,6 @@
 operation,num1,num2,result
 sum,2,2,4
 sum,1,12,13
-sum,100,1000,1101
+sum,100,1000,1100
 sum,0,0,0
 sum,1,-1,Invalid
