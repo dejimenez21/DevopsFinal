@@ -119,3 +119,25 @@ jobs:
     - name: Run POSTMAN collection
       run: |
        newman run ./DevopsPractice.Tests.Behavior/Postman/TestCalculadora.postman_collection.json -e ./DevopsPractice.Tests.Behavior/Postman/Environments/Staging.postman_environment.json --iteration-data ./DevopsPractice.Tests.Behavior/Postman/calc-test-data.csv 
+       
+  deployToProd:
+    
+    runs-on: ubuntu-latest
+    
+    environment: Production
+    
+    needs: testApiDev
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Deploy to Heroku
+
+      uses: mtsmachado8/heroku-deploy@v2.0.3
+      with:
+        # Email Linked to your Heroku Account
+        email: ${{ secrets.HEROKU_EMAIL }}
+        # Your Heroku API Key
+        api_key: ${{ secrets.HEROKU_API_KEY }}
+        # Your Heroku App Name
+        app_name: ${{ secrets.APP_NAME }}
