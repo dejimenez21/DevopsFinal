@@ -59,9 +59,9 @@ jobs:
         # Postman API key
         apiKey: ${{ secrets.POSTMAN_API_KEY }}
         # Collection to use
-        collection: DevopsPractice.Tests.Behavior\Postman\TestCalculadora.postman_collection.json
+        collection: DevopsPractice.Tests.Behavior/Postman/TestCalculadora.postman_collection.json
         # Environment to use
-        environment: DevopsPractice.Tests.Behavior\Postman\Environments\Development.postman_environment.json
+        environment: DevopsPractice.Tests.Behavior/Postman/Environments/Development.postman_environment.json
         # Path to CSV or JSON data file
-        iterationData: DevopsPractice.Tests.Behavior\Postman\calc-test-data.csv
+        iterationData: DevopsPractice.Tests.Behavior/Postman/calc-test-data.csv
 
