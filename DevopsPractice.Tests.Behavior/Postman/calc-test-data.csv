@@ -4,3 +4,11 @@ sum,1,12,13
 sum,100,1000,1100
 sum,0,0,0
 sum,1,-1,Invalid
+subtract,2,2,0
+subtract,5,3,2
+subtract,1000,500,500
+subtract,0,0,0
+subtract,1,-2,Invalid
+subtract,-8,2,Invalid
+subtract,4,8,Invalid
+subtract,100,200,Invalid
