@@ -53,12 +53,14 @@ jobs:
     
     # Install Node.js environment
     - name: set up node
-      uses: actions/setup-node@v2.2.0
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
 
     # Install newman
     - name: Install newman
       run: | 
-       npm install -g newman-run
+       npm install -g newman
       
     # Run POSTMAN collection
     - name: Run POSTMAN collection
