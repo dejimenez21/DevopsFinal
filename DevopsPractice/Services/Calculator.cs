@@ -34,5 +34,17 @@ namespace DevopsPractice.Services
             result = a - b;
             return true;
         }
+
+        public bool Multiply(int a, int b, out double? result)
+        {
+            result = null;
+            if(a < 0 || b < 0)
+            {
+                return false;
+            }
+            
+            result = a * b;
+            return true;
+        }
     }
 }
