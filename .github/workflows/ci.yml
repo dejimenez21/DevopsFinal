@@ -51,17 +51,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Newman Action
-      # You may pin to the exact commit or the version.
-      # uses: matt-ball/newman-action@0659e9b8d056c0d03d94e1dbfce380512088b566
-      uses: anthonyvscode/newman-action@v1.1
-      with:
-        # Postman API key
-        apiKey: ${{ secrets.POSTMAN_API_KEY }}
-        # Collection to use
-        collection: DevopsPractice.Tests.Behavior\Postman\TestCalculadora.postman_collection.json
-        # Environment to use
-        environment: DevopsPractice.Tests.Behavior\Postman\Environments\Development.postman_environment.json
-        # Path to CSV or JSON data file
-        iterationData: DevopsPractice.Tests.Behavior\Postman\calc-test-data.csv
+    # Install Node.js environment
+    - name: set up node
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
 
+    # Install newman
+    - name: Install newman
+      run: | 
+       npm install -g newman
+      
+    # Run POSTMAN collection
+    - name: Run POSTMAN collection
+      run: |
+       newman run ./DevopsPractice.Tests.Behavior/Postman/TestCalculadora.postman_collection.json -e ./DevopsPractice.Tests.Behavior/Postman/Environments/Development.postman_environment.json --iteration-data ./DevopsPractice.Tests.Behavior/Postman/calc-test-data.csv 
+    
