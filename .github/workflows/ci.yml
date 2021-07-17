@@ -58,7 +58,7 @@ jobs:
     # Install newman
     - name: Install newman
       run: | 
-       npm install -g newman
+       npm install -g newman-run
       
     # Run POSTMAN collection
     - name: Run POSTMAN collection
