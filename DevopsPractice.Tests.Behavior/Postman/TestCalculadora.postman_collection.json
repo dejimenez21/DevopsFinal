@@ -104,6 +104,12 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate result data\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.nombre).to.eql(\"Daniel Jimenez\");\r",
+							"    pm.expect(jsonData.matricula).to.eql(\"1084357\");\r",
 							"});"
 						],
 						"type": "text/javascript"
