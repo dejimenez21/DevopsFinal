@@ -13,9 +13,13 @@ namespace DevopsPractice.Controllers
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<string> Index()
+        public IActionResult Index()
         {
-            return "Welcome to calculator web api!";
+            return new JsonResult(new
+            {
+                nombre="Daniel Jimenez",
+                matricula= "1084357"
+            });
         }
     }
 }
