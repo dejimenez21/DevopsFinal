@@ -19,3 +19,10 @@ multiply,0,0,0
 multiply,0,47,0
 multiply,1,-1,Invalid
 multiply,-5,3,Invalid
+divide,2,2,1
+divide,1,4,0.25
+divide,100,20,5
+divide,0,47,0
+divide,1,-1,Invalid
+divide,-5,3,Invalid
+divide,4,0,Invalid
