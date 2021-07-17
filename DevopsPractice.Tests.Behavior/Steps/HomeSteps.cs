@@ -5,16 +5,20 @@ using Xunit;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace DevopsPractice.Tests.Behavior.Steps
 {
     [Binding]
     public class HomeSteps
     {
+        class JsonResult{
+            public string Nombre { get; set; }
+            public string Matricula { get; set; }
+        }
         private HttpClient _client;
         private const string BASE_URL = "https://localhost:5001/";
-        private string content;
-
+        private JsonResult content;
 
         [Given(@"I input the app url")]
         public void GivenIInputAppUrl()
@@ -27,13 +31,15 @@ namespace DevopsPractice.Tests.Behavior.Steps
         public async Task WhenISendTheGetRequest()
         {
             var response = await _client.GetAsync($"{BASE_URL}");
-            content = await response.Content.ReadAsStringAsync();
+            var jsonString = await response.Content.ReadAsStringAsync();
+            content = JsonConvert.DeserializeObject<JsonResult>(jsonString);
         }
         
-        [Then(@"The result should be '(.*)'")]
-        public void ThenTheResultShouldBe(string result)
+        [Then(@"The result should be '(.*)' '(.*)'")]
+        public void ThenTheResultShouldBe(string nombre, string matricula)
         {
-            Assert.Equal(result, content);
+            Assert.Equal(nombre, content.Nombre);
+            Assert.Equal(matricula, content.Matricula);
         }
     }
 }
