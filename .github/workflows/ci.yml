@@ -126,7 +126,7 @@ jobs:
     
     environment: Production
     
-    needs: testApiDev
+    needs: UAT
 
     steps:
     - uses: actions/checkout@v2
