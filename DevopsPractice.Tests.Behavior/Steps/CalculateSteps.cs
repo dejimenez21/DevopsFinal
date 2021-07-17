@@ -90,5 +90,25 @@ namespace DevopsPractice.Tests.Behavior.Steps
             Assert.Equal(result, content.result);
         }
         #endregion
+
+        #region DivideSteps
+        [When(@"I send divide request")]
+        public async Task WhenISendDivideRequest()
+        {
+            var appFactory = new WebApplicationFactory<Startup>();
+            _client = appFactory.CreateClient();
+
+            var response = await _client.GetAsync($"{BASE_URL}calculator/divide?num1={num1}&num2={num2}");
+            var jsonString = await response.Content.ReadAsStringAsync();
+            content = JsonConvert.DeserializeObject<JsonResponse>(jsonString);
+            
+        }
+        
+        [Then(@"the result (.*) should be the division")]
+        public void ThenTheResultShouldBeTheDivision(string result)
+        {
+            Assert.Equal(result, content.result);
+        }
+        #endregion
     }
 }

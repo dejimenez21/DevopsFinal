@@ -42,8 +42,19 @@ namespace DevopsPractice.Services
             {
                 return false;
             }
-            
+
             result = a * b;
+            return true;
+        }
+
+        public bool Divide(int a, int b, out double? result)
+        {
+            result = null;
+            if(a < 0 || b <= 0)
+            {
+                return false;
+            }
+            result = (double)a / (double)b;
             return true;
         }
     }
