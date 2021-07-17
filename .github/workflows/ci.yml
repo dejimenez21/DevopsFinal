@@ -21,3 +21,29 @@ jobs:
       run: dotnet build
     - name: UnitTests+Integration tests
       run: dotnet test --no-build /p:CollectCoverage=true /p:ExcludeByFile="**/DevopsPractice/*.cs" /p:Threshold=90
+  
+        
+  sonar-analisys:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+    steps:
+    - uses: actions/checkout@v2 
+    - name: SonarScanner
+      uses: highbyte/sonarscan-dotnet@2.0
+      with:
+        # The key of the SonarQube project
+        sonarProjectKey: dejimenez21_DevopsFinal
+        # The name of the SonarQube project
+        sonarProjectName:  DevopsFinal
+        # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
+        sonarOrganization: dejimenez21
+        # Optional command arguments to dotnet test
+        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        # Optional extra command arguments the the SonarScanner 'begin' command
+        sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
+
